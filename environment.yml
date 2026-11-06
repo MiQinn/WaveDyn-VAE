@@ -1,4 +1,4 @@
-name: Scaffoldflow-3.10
+name: WaveDyn-VAE
 channels:
   - conda-forge
   - defaults
