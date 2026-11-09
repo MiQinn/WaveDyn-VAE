@@ -5,12 +5,13 @@ Overview
 WaveDyn-VAE is a scaffold-based molecular generation framework that integrates variational autoencoders (VAEs) with WavePDE-guided latent space optimization to generate molecular scaffolds.
 
 Repository Structure
-WaveDyn-VAE
-    checkpoints/ —— Pretrained model checkpoints (downloaded from Releases or trained using the dataset yourself)
-    data/ —— Dataset and intermediate data directories
-    experiments/ —— Training and optimization scripts
-    src/ —— Core model implementations
-    result/ —— Output directory for intermediate and generated results
+
+WaveDyn-VAE/
+├── checkpoints/    # Pretrained model checkpoints
+├── data/           # Dataset and intermediate data directories
+├── experiments/    # Training and optimization scripts
+├── src/            # Core model implementations
+└── result/         # Intermediate and generated results
 
 Installation
 conda env create -f environment.yml
@@ -25,6 +26,7 @@ Property predictor checkpoint (prop_predictor_random_39891_seed42_scaffold.pt)
 WavePDE checkpoints for different molecular property optimization objectives (wavepde_random_*.pt)
 
 Important: After downloading the weights from the Releases page, please rename the specific model files to checkpoint.pt and place them in the corresponding directories as follows:
+
 WaveDyn-VAE/
 └── checkpoints/
     ├── vae/
@@ -42,8 +44,12 @@ WaveDyn-VAE/
     │       │   └── checkpoint.pt
     │       └── n_star/
     │           └── checkpoint.pt
-    └── prop_predictor/
-        └── prop_predictor_random_39891_seed42_scaffold.pt
+    ├── prop_predictor/
+    │   └── prop_predictor_random_39891_seed42_scaffold.pt
+    └── structure_predictor/
+        └── (pretrained structure predictor checkpoint)
+
+The property predictor and structure predictor checkpoints are provided in the repository.
 
 Data Availability
 The ChEMBL 35 dataset is not included in this repository and should be obtained separately. Other datasets used for model training and molecule generation should be prepared according to the corresponding scripts.
