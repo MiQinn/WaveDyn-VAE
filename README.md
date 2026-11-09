@@ -47,6 +47,7 @@ The ChEMBL 35 dataset is not included in this repository and should be obtained 
 ***Workflow***
 
 The molecular generation workflow consists of the following steps:
+
 1、*Scaffold extraction:* Sca_bondbreak_dummy.py extracts molecular scaffolds and introduces dummy atoms (*) at the attachment 、points.
 2、*VAE training:* train_vae.py trains the variational autoencoder.
 3、*Predictor data preparation:* prepare_random_data.py prepares training datasets for property and structural predictors.
