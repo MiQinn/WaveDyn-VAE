@@ -48,24 +48,24 @@ The ChEMBL 35 dataset is not included in this repository and should be obtained 
 
 The molecular generation workflow consists of the following steps:
 
-1、*Scaffold extraction:* Sca_bondbreak_dummy.py extracts molecular scaffolds and introduces dummy atoms (*) at the attachment 、points.
+1、*Scaffold extraction:* `Sca_bondbreak_dummy.py` extracts molecular scaffolds and introduces dummy atoms (*) at the attachment 、points.
 
-2、*VAE training:* train_vae.py trains the variational autoencoder.
+2、*VAE training:* `train_vae.py` trains the variational autoencoder.
 
-3、*Predictor data preparation:* prepare_random_data.py prepares training datasets for property and structural predictors.
+3、*Predictor data preparation:* `prepare_random_data.py` prepares training datasets for property and structural predictors.
 
-4、*Property predictor training:* train_prop_predictor.sh trains the molecular property predictors.
+4、*Property predictor training:* `train_prop_predictor.sh` trains the molecular property predictors.
 
-5、*Structure predictor training:* train_structure_predictor.py trains the structural predictor.
+5、*Structure predictor training:* `train_structure_predictor.py` trains the structural predictor.
 
-6、*WavePDE training:* train_wavepde_prop.sh trains property-guided WavePDE models based on the pretrained predictors.
+6、*WavePDE training:* `train_wavepde_prop.sh` trains property-guided WavePDE models based on the pretrained predictors.
 
-7、*Scaffold optimization and generation:* optimization.sh performs latent space optimization and decodes the optimized representations into new scaffolds.
+7、*Scaffold optimization and generation:* `optimization.sh` performs latent space optimization and decodes the optimized representations into new scaffolds.
 
-8、*Anchor library construction:* build_supervised_anchor_libiary.py constructs libraries of sidechains and scaffold attachment points.
+8、*Anchor library construction:* `build_supervised_anchor_libiary.py` constructs libraries of sidechains and scaffold attachment points.
 
-9、*Combination enumeration:* enumerate_supervised_intermediate.py enumerates scaffold–sidechain combinations based on the constructed libraries.
+9、*Combination enumeration:* `enumerate_supervised_intermediate.py` enumerates scaffold–sidechain combinations based on the constructed libraries.
 
-10、*Molecular reconnection:* reconnect_suppervised_assigenments.py reconnects the enumerated scaffolds and sidechains to generate complete molecules.
+10、*Molecular reconnection:* `reconnect_suppervised_assigenments.py` reconnects the enumerated scaffolds and sidechains to generate complete molecules.
 
 11、*Molecular screening:* The generated molecules are filtered based on structural and physicochemical criteria to obtain candidate molecules.
