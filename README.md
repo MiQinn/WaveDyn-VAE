@@ -1,60 +1,50 @@
-WaveDyn-VAE
+**WaveDyn-VAE**
 Scaffold-based molecular generation with WavePDE
 
-Overview
+***Overview***
 WaveDyn-VAE is a scaffold-based molecular generation framework that integrates variational autoencoders (VAEs) with WavePDE-guided latent space optimization to generate molecular scaffolds.
 
-Repository Structure
+***Repository Structure***
+- `checkpoints/`: Pretrained model checkpoints.
+- `data/`: Dataset and intermediate data directories.
+- `experiments/`: Training and optimization scripts.
+- `src/`: Core model implementations.
+- `result/`: Intermediate and generated results.
 
-WaveDyn-VAE/
-├── checkpoints/    # Pretrained model checkpoints
-├── data/           # Dataset and intermediate data directories
-├── experiments/    # Training and optimization scripts
-├── src/            # Core model implementations
-└── result/         # Intermediate and generated results
-
-Installation
+***Installation***
 conda env create -f environment.yml
 conda activate WaveDyn-VAE
 
-Pretrained Models
-Pretrained model checkpoints are available at GitHub Releases.
+Pretrained model checkpoints are available at [GitHub Releases](https://github.com/MiQinn/WaveDyn-VAE/releases).
 
-Includes:
-VAE checkpoint (vae_chembl_sca_screened.pt)
-Property predictor checkpoint (prop_predictor_random_39891_seed42_scaffold.pt)
-WavePDE checkpoints for different molecular property optimization objectives (wavepde_random_*.pt)
+The release includes:
 
-Important: After downloading the weights from the Releases page, please rename the specific model files to checkpoint.pt and place them in the corresponding directories as follows:
+- VAE checkpoint: `vae_chembl_sca_screened.pt`
+- Property predictor checkpoint: `prop_predictor_random_39891_seed42_scaffold.pt`
+- WavePDE checkpoints for different molecular property optimization objectives: `wavepde_random_*.pt`
 
-WaveDyn-VAE/
-└── checkpoints/
-    ├── vae/
-    │   └── chembl_sca_screened/
-    │       └── checkpoint.pt
-    ├── wavepde_prop/
-    │   └── random/
-    │       ├── fsp3/
-    │       │   └── checkpoint.pt
-    │       ├── logp/
-    │       │   └── checkpoint.pt
-    │       ├── n_atoms/
-    │       │   └── checkpoint.pt
-    │       ├── n_ring/
-    │       │   └── checkpoint.pt
-    │       └── n_star/
-    │           └── checkpoint.pt
-    ├── prop_predictor/
-    │   └── prop_predictor_random_39891_seed42_scaffold.pt
-    └── structure_predictor/
-        └── (pretrained structure predictor checkpoint)
+***Model placement***
+After downloading the VAE and WavePDE weights, rename each file to `checkpoint.pt` and place it in the corresponding directory:
+
+1. VAE checkpoint:
+   `checkpoints/vae/chembl_sca_screened/checkpoint.pt`
+
+2. WavePDE checkpoints:
+   - `checkpoints/wavepde_prop/random/fsp3/checkpoint.pt`
+   - `checkpoints/wavepde_prop/random/logp/checkpoint.pt`
+   - `checkpoints/wavepde_prop/random/n_atoms/checkpoint.pt`
+   - `checkpoints/wavepde_prop/random/n_ring/checkpoint.pt`
+   - `checkpoints/wavepde_prop/random/n_star/checkpoint.pt`
+
+3. Property predictor:
+   `checkpoints/prop_predictor/prop_predictor_random_39891_seed42_scaffold.pt`
 
 The property predictor and structure predictor checkpoints are provided in the repository.
 
-Data Availability
+***Data Availability***
 The ChEMBL 35 dataset is not included in this repository and should be obtained separately. Other datasets used for model training and molecule generation should be prepared according to the corresponding scripts.
 
-Workflow
+***Workflow***
 The molecular generation workflow consists of the following steps:
 1、Scaffold extraction: Sca_bondbreak_dummy.py extracts molecular scaffolds and introduces dummy atoms (*) at the attachment 、points.
 2、VAE training: train_vae.py trains the variational autoencoder.
